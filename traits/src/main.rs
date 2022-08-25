@@ -5,6 +5,8 @@ fn main() {
     abs_quartic_root(-100f32));
 
     println!("abs quartic roots {}", abs_quartic_roots(-100f64));
+
+    println!("{:?} {:?}", get_third(&[3.1, 3.2]), get_third(&[4.1,4.2,4.3,4.4]))
 }
 
 /*
@@ -94,4 +96,53 @@ impl HasAbsoluteValues for f64{
 fn abs_quartic_roots<Number>(x:Number) -> Number
 where Number: HasSquareRoots + HasAbsoluteValues{
     x.abs().sqrt().sqrt()
+}
+
+/*Now assume that your code, or some third-party code, 
+already defines some traits,and you need all of them.
+trait inheritance.
+ */
+
+
+/* 
+
+trait HasSquareRoot {
+    fn sqrt(self) -> Self;
+    }
+impl HasSquareRoot for f32 {
+    fn sqrt(self) -> Self { self.sqrt() }
+    }
+impl HasSquareRoot for f64 {
+    fn sqrt(self) -> Self { self.sqrt() }
+    }
+trait HasAbsoluteValue {
+    fn abs(self) -> Self;
+    }
+ 
+impl HasAbsoluteValue for f32 {
+    fn abs(self) -> Self { self.abs() }
+    }
+impl HasAbsoluteValue for f64 {
+    fn abs(self) -> Self { self.abs() }
+    }
+trait HasSqrtAndAbs: HasSquareRoot + HasAbsoluteValue { }
+impl HasSqrtAndAbs for f32 {}
+impl HasSqrtAndAbs for f64 {}
+fn abs_quartic_root<Number>(x: Number) -> Number
+where Number: HasSqrtAndAbs {
+x.abs().sqrt().sqrt()
+}
+
+// print!("{} {}",
+// abs_quartic_root(-100f64),
+// abs_quartic_root(-100f32));
+
+*/
+
+fn get_third(s: &[f64]) -> Option<f64>{
+    if s.len() >= 3{
+        Some(s[2])
+    }else{
+        None
+    }
 }
