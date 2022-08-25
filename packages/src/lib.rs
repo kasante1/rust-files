@@ -1,7 +1,7 @@
 mod front_of_house;
-
+#[allow(dead_code)]
 fn serve_order(){}
-
+#[allow(dead_code)]
 mod back_of_house{
     pub struct Breakfast{
         pub toast: String,
@@ -15,6 +15,7 @@ mod back_of_house{
             }
         }
     }
+    #[allow(dead_code)]
     fn fix_incorrect_order(){
         cook_order();
         super::serve_order();

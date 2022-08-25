@@ -1,5 +1,7 @@
 fn main() {
-	let x  = 5;
+	#[allow(unused_variables)]
+	let mut x  = 5;
+	#[allow(unused_variables)]
 	let y = &mut x;
 	
     // let x = 5;

@@ -62,5 +62,3 @@ fn main() {
     // fs::read_to_string(“hello.txt”)
 }
 
-
-}
